@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { Globe3D } from "@/components/ui/3d-globe";
 import { StatusPill, SocialDock, ActivityWidget } from "@/components/ui/HeroWidgets";
 
@@ -6,7 +7,41 @@ interface HeroProps {
   onNavigate?: (section: string) => void;
 }
 
+const typingWords = ["Full -Stack Developer.", "Software Engineer.", "Freelancer", "System Designer."];
+
 export default function Hero({ onNavigate }: HeroProps) {
+  const [text, setText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  useEffect(() => {
+    let ticker = setTimeout(() => {
+      const i = loopNum % typingWords.length;
+      const fullText = typingWords[i];
+
+      setText(isDeleting 
+        ? fullText.substring(0, text.length - 1) 
+        : fullText.substring(0, text.length + 1)
+      );
+
+      if (isDeleting) {
+        setTypingSpeed(40);
+      }
+
+      if (!isDeleting && text === fullText) {
+        setIsDeleting(true);
+        setTypingSpeed(2500); // Pause at end of word
+      } else if (isDeleting && text === "") {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setTypingSpeed(150); // Pause before next word
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(ticker);
+  }, [text, isDeleting, loopNum, typingSpeed]);
+
   return (
     <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center pt-10 pb-32 px-6">
       {/* Floating Hero Widgets */}
@@ -31,7 +66,10 @@ export default function Hero({ onNavigate }: HeroProps) {
       <div className="relative z-10 flex flex-col items-center text-center mt-auto md:mt-24 mb-auto pointer-events-none">
         <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl uppercase drop-shadow-2xl">
           I'm Sadeepa <br />
-          <span className="text-blue-400">Portfolio</span>
+          <span className="text-blue-400 inline-block min-w-[280px] md:min-w-[450px] text-left">
+            {text}
+            <span className="animate-pulse border-r-4 border-blue-400 ml-1"></span>
+          </span>
         </h2>
         <p className="mt-2 text-neutral-300 max-w-lg md:text-xl drop-shadow-md">
           Welcome to my interactive 3D universe.

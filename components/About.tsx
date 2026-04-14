@@ -12,6 +12,15 @@ export default function About() {
         transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
         className="w-full max-w-4xl p-8 md:p-12 bg-neutral-900/40 backdrop-blur-2xl rounded-[32px] border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] text-center mb-8"
       >
+        <div className="flex justify-center mb-6">
+          <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white/10 shadow-xl">
+            <img 
+              src="/assets/avatar.png" 
+              alt="Sadeepa Sri" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
         <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
           About <span className="text-blue-400">Me</span>
         </h2>
