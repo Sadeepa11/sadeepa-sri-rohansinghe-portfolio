@@ -130,109 +130,86 @@ function Marker({
 }: MarkerProps) {
   const [hovered, setHovered] = useState(false);
   const groupRef = useRef<THREE.Group>(null);
-  const imageGroupRef = useRef<THREE.Group>(null);
+  const rippleRef = useRef<THREE.Mesh>(null);
   const { camera } = useThree();
+  const [isVisible, setIsVisible] = useState(true);
 
-  // Surface position (where the line starts)
+  // Directly on the surface
   const surfacePosition = useMemo(() => {
-    return latLngToVector3(marker.lat, marker.lng, radius * 1.001);
+    return latLngToVector3(marker.lat, marker.lng, radius * 1.002);
   }, [marker.lat, marker.lng, radius]);
 
-  // Top of the line (where the image is) - positioned further out to prevent going inside globe
-  const topPosition = useMemo(() => {
-    return latLngToVector3(marker.lat, marker.lng, radius * 1.18);
-  }, [marker.lat, marker.lng, radius]);
-
-  const lineHeight = topPosition.distanceTo(surfacePosition);
-
-  // Marker is always visible as requested
-  const isVisible = true;
-
-  const handlePointerEnter = useCallback(() => {
-    setHovered(true);
-    onHover?.(marker);
-  }, [marker, onHover]);
-
-  const handlePointerLeave = useCallback(() => {
-    setHovered(false);
-    onHover?.(null);
-  }, [onHover]);
-
-  const handleClick = useCallback(() => {
-    onClick?.(marker);
-  }, [marker, onClick]);
-
-  // Calculate line center and orientation
-  const { lineCenter, lineQuaternion } = useMemo(() => {
-    const center = surfacePosition.clone().lerp(topPosition, 0.5);
-
-    // Calculate rotation to align cylinder with the direction from surface to top
-    const direction = topPosition.clone().sub(surfacePosition).normalize();
+  // Orientation facing out from the center of the earth
+  const normalQuaternion = useMemo(() => {
+    const normal = surfacePosition.clone().normalize();
     const quaternion = new THREE.Quaternion();
-    quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction);
+    quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), normal);
+    return quaternion;
+  }, [surfacePosition]);
 
-    return { lineCenter: center, lineQuaternion: quaternion };
-  }, [surfacePosition, topPosition]);
+  useFrame((state) => {
+    if (!groupRef.current) return;
+
+    // Visibility / Backface culling
+    const normal = surfacePosition.clone().normalize();
+    const cameraToPoint = camera.position.clone().sub(surfacePosition).normalize();
+    const dot = normal.dot(cameraToPoint);
+    const shouldBeVisible = dot > 0.08; // slightly greater than 0 so it disappears just at the horizon
+
+    if (isVisible !== shouldBeVisible) {
+      setIsVisible(shouldBeVisible);
+    }
+
+    // Ripple animation
+    if (rippleRef.current && isVisible) {
+      const t = state.clock.getElapsedTime();
+      const scale = 1 + ((t * 1.5) % 2); // scale bounds
+      const opacity = Math.max(0, 1 - ((t * 1.5) % 2) / 2); // animate opacity fade
+
+      rippleRef.current.scale.set(scale, scale, scale);
+      (rippleRef.current.material as THREE.MeshBasicMaterial).opacity = opacity;
+    }
+  });
 
   return (
-    <group ref={groupRef} visible={isVisible}>
-      {/* Pin line from surface to image - properly oriented */}
-      <mesh position={lineCenter} quaternion={lineQuaternion}>
-        <cylinderGeometry args={[0.003, 0.003, lineHeight, 8]} />
-        <meshBasicMaterial
-          color={hovered ? "#ffffff" : "#94a3b8"}
-          transparent
-          opacity={hovered ? 0.9 : 0.6}
-        />
+    <group ref={groupRef} position={surfacePosition} quaternion={normalQuaternion} visible={isVisible}>
+      {/* Central Solid Dot */}
+      <mesh>
+        <circleGeometry args={[0.025, 32]} />
+        <meshBasicMaterial color="#4da6ff" side={THREE.DoubleSide} />
       </mesh>
 
-      {/* Pin point at the surface */}
-      <mesh position={surfacePosition} quaternion={lineQuaternion}>
-        <coneGeometry args={[0.015, 0.04, 8]} />
-        <meshBasicMaterial color={hovered ? "#f97316" : "#ef4444"} />
+      {/* Animated Pulsing Ring */}
+      <mesh ref={rippleRef}>
+        <ringGeometry args={[0.025, 0.035, 32]} />
+        <meshBasicMaterial color="#4da6ff" transparent opacity={0.8} side={THREE.DoubleSide} />
       </mesh>
 
-      {/* Circular image at the top */}
-      <group ref={imageGroupRef} position={topPosition}>
+      {/* Avatar and Label strictly floating above the point */}
+      {isVisible && (
         <Html
-          transform
+          position={[0, 0, 0.05]} // push slightly "up" along Z axis of this quaternion (out from earth)
           center
-          sprite
           distanceFactor={10}
-          style={{
-            pointerEvents: isVisible ? "auto" : "none",
-            opacity: isVisible ? 1 : 0,
-            transition: "opacity 0.15s ease-out",
-          }}
+          style={{ pointerEvents: "none" }}
         >
-          <div
-            className={cn(
-              "flex items-center justify-center cursor-pointer overflow-hidden rounded-full bg-neutral-900 shadow-lg border border-white/20 transition-all duration-200",
-              hovered && "scale-125 shadow-xl border-white/50 bg-neutral-800",
-            )}
-            style={{
-              width: "10px",
-              height: "10px",
-            }}
-            onMouseEnter={handlePointerEnter}
-            onMouseLeave={handlePointerLeave}
-            onClick={handleClick}
+          <div 
+            className="flex flex-col items-center gap-1.5 transition-all duration-300"
+            style={{ transform: "translateY(-30px)" }} // visually lift it
           >
-            {marker.icon ? (
-              <div className="flex items-center justify-center text-white">
-                {marker.icon}
+            {marker.src && (
+              <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-blue-400 bg-neutral-900 shadow-[0_0_20px_rgba(77,166,255,0.6)]">
+                <img src={marker.src} alt="Avatar" className="w-full h-full object-cover" />
               </div>
-            ) : marker.src ? (
-              <img
-                src={marker.src}
-                alt={marker.label || "Marker"}
-                className="h-full w-full object-cover"
-                draggable={false}
-              />
-            ) : null}
+            )}
+            {marker.label && (
+              <div className="px-2 py-1 bg-neutral-900/90 backdrop-blur-md rounded border border-blue-400/30 text-blue-300 text-[9px] font-bold uppercase tracking-widest whitespace-nowrap shadow-lg">
+                {marker.label}
+              </div>
+            )}
           </div>
         </Html>
-      </group>
+      )}
     </group>
   );
 }
