@@ -7,7 +7,7 @@ interface HeroProps {
   onNavigate?: (section: string) => void;
 }
 
-const typingWords = ["Full -Stack Developer.", "Software Engineer.", "Freelancer.", "System Designer."];
+const typingWords = ["Developer.", "Software Engineer.", "Freelancer.", "System Designer."];
 
 export default function Hero({ onNavigate }: HeroProps) {
   const [text, setText] = useState("");
@@ -53,6 +53,15 @@ export default function Hero({ onNavigate }: HeroProps) {
       <div className="absolute inset-0 z-0 flex items-center justify-center pt-24 mask-image-bottom pointer-events-none">
         <Globe3D
           className="h-[120%] w-[120%] lg:h-[150%] lg:w-[150%] opacity-80 pointer-events-auto"
+          markers={[
+            { 
+              lat: 6.8276452, 
+              lng: 79.9164840, 
+              src: "/assets/avatar.png",
+              label: "Me",
+              size: 1.5 
+            }
+          ]}
           config={{
             atmosphereColor: "#4da6ff",
             atmosphereIntensity: 20,
