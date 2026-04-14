@@ -1,0 +1,57 @@
+"use client";
+import { Globe3D } from "@/components/ui/3d-globe";
+import { StatusPill, SocialDock, ActivityWidget } from "@/components/ui/HeroWidgets";
+
+interface HeroProps {
+  onNavigate?: (section: string) => void;
+}
+
+export default function Hero({ onNavigate }: HeroProps) {
+  return (
+    <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center pt-10 pb-32 px-6">
+      {/* Floating Hero Widgets */}
+      <StatusPill />
+      <SocialDock />
+      <ActivityWidget />
+
+      {/* Globe Container - Now centered as the main focus */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pt-24 mask-image-bottom pointer-events-none">
+        <Globe3D
+          className="h-[120%] w-[120%] lg:h-[150%] lg:w-[150%] opacity-80 pointer-events-auto"
+          config={{
+            atmosphereColor: "#4da6ff",
+            atmosphereIntensity: 20,
+            bumpScale: 5,
+            autoRotateSpeed: 0.5,
+          }}
+        />
+      </div>
+
+      {/* Text Content */}
+      <div className="relative z-10 flex flex-col items-center text-center mt-auto md:mt-24 mb-auto pointer-events-none">
+        <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl uppercase drop-shadow-2xl">
+          I'm Sadeepa <br />
+          <span className="text-blue-400">Portfolio</span>
+        </h2>
+        <p className="mt-2 text-neutral-300 max-w-lg md:text-xl drop-shadow-md">
+          Welcome to my interactive 3D universe.
+        </p>
+
+        <div className="mt-8 flex gap-4 pointer-events-auto">
+          <button 
+            onClick={() => onNavigate?.("Projects")}
+            className="flex cursor-pointer items-center justify-center rounded-3xl bg-blue-600/80 backdrop-blur-md px-8 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:bg-blue-500 hover:scale-105 active:scale-95"
+          >
+            Show Projects
+          </button>
+          <button 
+            onClick={() => onNavigate?.("Contact")}
+            className="flex cursor-pointer items-center justify-center rounded-3xl bg-neutral-800/80 backdrop-blur-md px-8 py-3 font-semibold text-white shadow-lg border border-neutral-700 transition-all duration-200 hover:bg-neutral-700 hover:scale-105 active:scale-95"
+          >
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

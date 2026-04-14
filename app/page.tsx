@@ -1,65 +1,93 @@
-import Image from "next/image";
+"use client";
+
+import ScrollArea from "@/components/ui/ScrollArea";
+
+import { useState } from "react";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
+import { motion, AnimatePresence } from "framer-motion";
+import { Home as HomeIcon, User, Code2, Briefcase, Mail } from "lucide-react";
+
+const navItems = [
+  { id: "Home", icon: HomeIcon, label: "Home" },
+  { id: "About", icon: User, label: "About" },
+  { id: "Skills", icon: Code2, label: "Skills" },
+  { id: "Projects", icon: Briefcase, label: "Projects" },
+  { id: "Contact", icon: Mail, label: "Contact" },
+];
 
 export default function Home() {
+  const [currentSection, setCurrentSection] = useState("Home");
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="relative w-full h-screen overflow-hidden bg-neutral-950 text-white">
+      {/* Abstract Animated Blur Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Main Content Area */}
+      <div className="relative z-10 w-full h-full pb-32">
+        <AnimatePresence mode="wait">
+          {currentSection === "Home" && (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
+              className="w-full h-full"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <Hero onNavigate={setCurrentSection} />
+            </motion.div>
+          )}
+          {currentSection === "About" && (
+            <motion.div key="about" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="w-full h-full"><ScrollArea><About /></ScrollArea></motion.div>
+          )}
+          {currentSection === "Skills" && (
+            <motion.div key="skills" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="w-full h-full"><ScrollArea><Skills /></ScrollArea></motion.div>
+          )}
+          {currentSection === "Projects" && (
+            <motion.div key="projects" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="w-full h-full"><ScrollArea><Projects /></ScrollArea></motion.div>
+          )}
+          {currentSection === "Contact" && (
+            <motion.div key="contact" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="w-full h-full"><ScrollArea><Contact /></ScrollArea></motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* iOS Bottom Tab Bar */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 w-auto px-4 max-w-[90vw]">
+        <div className="flex items-center gap-1 sm:gap-2 px-4 py-3 bg-neutral-900/60 backdrop-blur-2xl rounded-[32px] border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+          {navItems.map((item) => {
+            const isActive = currentSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setCurrentSection(item.id)}
+                className={`group relative flex flex-col items-center justify-center w-14 h-12 sm:w-16 sm:h-14 rounded-2xl transition-all duration-300 ${
+                  isActive ? "text-white" : "text-neutral-500 hover:text-neutral-300"
+                }`}
+              >
+                {/* Active Indicator Background */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-white/10 rounded-2xl"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <item.icon size={isActive ? 22 : 20} className={`mb-1 transition-all duration-300 ${isActive ? "scale-110" : ""}`} />
+                <span className="text-[9px] sm:text-[10px] font-medium tracking-wide">{item.label}</span>
+              </button>
+            );
+          })}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
