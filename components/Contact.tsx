@@ -14,9 +14,23 @@ export default function Contact() {
         <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight text-center">
           Let's <span className="text-blue-400">Connect</span>
         </h2>
-        <p className="text-neutral-300 text-center mb-10 text-lg font-medium">
+        <p className="text-neutral-300 text-center mb-8 text-lg font-medium">
           Ready to launch your next project? Drop a message below and I'll get back to you within 24 hours.
         </p>
+
+        <div className="flex flex-col md:flex-row gap-4 mb-10 w-full">
+          <div className="flex-1 p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center gap-2 transition hover:bg-white/10">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-blue-400">Phone & WhatsApp</span>
+            <span className="text-white font-medium">+94 76 5772 504</span>
+          </div>
+          <div className="flex-1 p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center gap-2 transition hover:bg-white/10">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-blue-400">Address</span>
+            <span className="text-white text-sm font-medium px-4">
+              No:8/2, Neelammahara Road, Katuwawala, Boralesgamuwa, Colombo, Western Province, Sri Lanka, Asia
+            </span>
+          </div>
+        </div>
+
 
         <form className="space-y-6">
           <div className="space-y-2">
