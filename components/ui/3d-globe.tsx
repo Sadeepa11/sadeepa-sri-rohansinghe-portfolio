@@ -357,6 +357,63 @@ function Atmosphere({ radius, color, intensity, blur }: AtmosphereProps) {
 }
 
 // ============================================================================
+// Asteroid Field Component (For background decoration)
+// ============================================================================
+
+function AsteroidField({ count = 100, innerRadius = 8, outerRadius = 25 }) {
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  
+  useMemo(() => {
+    // We delay the matrix generation slightly to ensure the ref is bound, but useMemo fires correctly for creating static arrays.
+    // Actually, it's safer to generate matrix array and apply it in useLayoutEffect or just use an InstancedMesh with an array mapped.
+  }, []);
+
+  const [matrices] = useState(() => {
+    const arr = [];
+    const dummy = new THREE.Object3D();
+    for (let i = 0; i < count; i++) {
+       const theta = Math.random() * Math.PI * 2;
+       const phi = Math.acos(Math.random() * 2 - 1);
+       const r = innerRadius + Math.random() * (outerRadius - innerRadius);
+       dummy.position.set(
+         r * Math.sin(phi) * Math.cos(theta),
+         r * Math.cos(phi),
+         r * Math.sin(phi) * Math.sin(theta)
+       );
+       dummy.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+       const scale = 0.5 + Math.random() * 2;
+       dummy.scale.set(scale, scale, scale);
+       dummy.updateMatrix();
+       arr.push(dummy.matrix.clone());
+    }
+    return arr;
+  });
+
+  React.useLayoutEffect(() => {
+    if (meshRef.current) {
+      matrices.forEach((matrix, i) => {
+        meshRef.current!.setMatrixAt(i, matrix);
+      });
+      meshRef.current.instanceMatrix.needsUpdate = true;
+    }
+  }, [matrices]);
+
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y += 0.0003;
+      meshRef.current.rotation.z += 0.0001;
+    }
+  });
+
+  return (
+    <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+      <dodecahedronGeometry args={[0.08, 0]} />
+      <meshStandardMaterial color="#666666" roughness={0.9} />
+    </instancedMesh>
+  );
+}
+
+// ============================================================================
 // Scene Component
 // ============================================================================
 
@@ -405,7 +462,7 @@ function Scene({ markers, config, onMarkerClick, onMarkerHover }: SceneProps) {
         />
       </group>
 
-      {/* Universe Elements (Sun, Moon, Stars) */}
+      {/* Universe Elements (Sun, Moon, Stars, Planets, Asteroids) */}
       {config.showUniverse && (
         <group>
           <Stars 
@@ -417,6 +474,21 @@ function Scene({ markers, config, onMarkerClick, onMarkerHover }: SceneProps) {
             fade 
             speed={1} 
           />
+          
+          <AsteroidField count={150} innerRadius={config.radius * 4} outerRadius={config.radius * 12} />
+
+          {/* Red Planet (Mars) */}
+          <mesh position={[config.radius * 6, -config.radius * 2, -config.radius * 5]}>
+            <sphereGeometry args={[config.radius * 0.5, 32, 32]} />
+            <meshStandardMaterial color="#c1440e" roughness={0.9} />
+          </mesh>
+
+          {/* Blue Gas Giant (Neptune) */}
+          <mesh position={[-config.radius * 7, config.radius * 6, config.radius * 8]}>
+            <sphereGeometry args={[config.radius * 1.2, 32, 32]} />
+            <meshStandardMaterial color="#2d68c4" roughness={0.3} />
+          </mesh>
+
           {/* Sun */}
           <group position={[-config.radius * 8, config.radius * 5, -config.radius * 10]}>
             <mesh>
