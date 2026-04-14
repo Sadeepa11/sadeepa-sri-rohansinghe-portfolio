@@ -260,7 +260,7 @@ function RotatingGlobe({
   }, [config.radius]);
 
   return (
-    <group ref={groupRef}>
+    <group ref={groupRef} rotation={[config.initialRotation.x, config.initialRotation.y, 0]}>
       {/* Main globe mesh with Earth texture */}
       <mesh geometry={geometry}>
         <meshStandardMaterial

@@ -67,6 +67,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             atmosphereIntensity: 20,
             bumpScale: 5,
             autoRotateSpeed: 0.5,
+            initialRotation: { x: 0.2, y: 3.1 },
           }}
         />
       </div>
