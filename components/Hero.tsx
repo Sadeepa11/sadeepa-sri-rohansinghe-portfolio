@@ -7,7 +7,7 @@ interface HeroProps {
   onNavigate?: (section: string) => void;
 }
 
-const typingWords = ["Full -Stack Developer.", "Software Engineer.", "Freelancer", "System Designer."];
+const typingWords = ["Full -Stack Developer.", "Software Engineer.", "Freelancer.", "System Designer."];
 
 export default function Hero({ onNavigate }: HeroProps) {
   const [text, setText] = useState("");
@@ -66,7 +66,7 @@ export default function Hero({ onNavigate }: HeroProps) {
       <div className="relative z-10 flex flex-col items-center text-center mt-auto md:mt-24 mb-auto pointer-events-none">
         <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl uppercase drop-shadow-2xl">
           I'm Sadeepa <br />
-          <span className="text-blue-400 inline-block min-w-[280px] md:min-w-[450px] text-left">
+          <span className="text-blue-400 inline-block max-w-[80vw] md:man-w-[80vw] text-left">
             {text}
             <span className="animate-pulse border-r-4 border-blue-400 ml-1"></span>
           </span>
