@@ -31,7 +31,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 w-full h-full pb-32">
+      <div className="relative z-10 w-full h-full pb-24">
         <AnimatePresence mode="wait">
           {currentSection === "Home" && (
             <motion.div

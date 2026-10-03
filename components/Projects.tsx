@@ -48,9 +48,9 @@ export default function Projects() {
   });
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between pt-6 pb-24 overflow-hidden">
+    <div className="relative w-full h-full flex flex-col justify-center items-center p-4 md:p-8 pt-10 pb-28 overflow-hidden">
       {/* Title & Filter Tabs Header */}
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 shrink-0 z-10">
+      <div className="w-full max-w-7xl px-2 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 shrink-0 z-10">
         <div>
           <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
             Featured <span className="text-blue-400">Projects</span>
@@ -101,7 +101,7 @@ export default function Projects() {
         </div>
       ) : (
         /* Horizontal X-Axis Scroll Container */
-        <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-none px-6 md:px-12 py-2 flex items-center gap-6 snap-x snap-mandatory flex-1">
+        <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-none px-2 sm:px-6 py-2 flex items-center gap-6 snap-x snap-mandatory shrink-0">
           {filteredProjects.map((project, index) => {
             const displayTags = project.technologies || project.tags || [];
             const mainImage = project.images && project.images.length > 0 ? project.images[0] : null;
