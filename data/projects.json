@@ -218,5 +218,89 @@
     "createdAt": "2026-10-03T12:01:00.165Z",
     "updatedAt": "2026-10-03T12:01:00.165Z",
     "__v": 0
+  },
+  {
+    "_id": "6ac0937e88686c1e96f1a770",
+    "title": "Personal Workout App",
+    "slug": "personal-workout-app",
+    "type": "app",
+    "category": "Workout Mobile App",
+    "client": "For persol Use",
+    "description": "A personalized fitness and workout management app that helps users create workout plans, track exercises, monitor progress, and maintain their fitness routines with an easy-to-use mobile experience.",
+    "technologies": [
+      "React Native"
+    ],
+    "projectLink": "",
+    "githubLink": "",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791005517/modulavers/projects/app/personal-workout-app/fix8azdqpowxa6czqze7.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791005518/modulavers/projects/app/personal-workout-app/unalkdxhiulee1poyfhj.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791005559/modulavers/projects/app/personal-workout-app/gnpthceih1ez3eyhi0qs.jpg"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-03T05:32:46.250Z",
+    "updatedAt": "2026-10-03T05:32:46.250Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ac102a8f3a8bc5d67888b74",
+    "title": "MVS Clothing",
+    "slug": "mvs-clothing",
+    "type": "web",
+    "category": "E-Commerce",
+    "client": "MVS Clothing",
+    "description": "A modern e-commerce clothing platform designed to provide a seamless online shopping experience. Customers can browse clothing collections, explore product details, choose sizes and variations, add items to their cart, and place orders through a simple and user-friendly interface.",
+    "technologies": [
+      "Next Js"
+    ],
+    "projectLink": "https://mvs-clothing.vercel.app/",
+    "githubLink": "",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791033970/modulavers/projects/web/mvs-clothing/wc5mdw72qjdqizgss2zx.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791033971/modulavers/projects/web/mvs-clothing/ohs9zhduqktyodykkxj0.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791033973/modulavers/projects/web/mvs-clothing/u4gqmg6tlfu1zhg56rnj.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791033975/modulavers/projects/web/mvs-clothing/ynlrjn7g0cllcu9zegsb.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791033994/modulavers/projects/web/mvs-clothing/tjx2hdmqatz9qxlfn8g3.jpg"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-03T13:27:04.847Z",
+    "updatedAt": "2026-10-03T13:27:04.847Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ac104cefaed9bf05c03dfb3",
+    "title": "ModuLink",
+    "slug": "modulink",
+    "type": "app",
+    "category": "Chat App",
+    "client": "ModuLink",
+    "description": "A modern real-time chat application designed for seamless communication, featuring private messaging, media sharing, and an engaging story feature. Users can connect with others, share updates through stories, and enjoy a smooth and interactive messaging experience.",
+    "technologies": [
+      "React Native",
+      "Express JS",
+      "MySQL"
+    ],
+    "projectLink": "",
+    "githubLink": "",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034531/modulavers/projects/app/modulink/wgfxn3k7syrg1p1nm23i.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034533/modulavers/projects/app/modulink/kehjbhu07vyx8th94epn.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034535/modulavers/projects/app/modulink/nh3qlygq6rzbhfosmc9r.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034536/modulavers/projects/app/modulink/yjugqe08k8hjgaxw2bvb.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034537/modulavers/projects/app/modulink/oz2vqnzrh3fitxua0kmk.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034538/modulavers/projects/app/modulink/qmunpyqoadid90ioslzu.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034540/modulavers/projects/app/modulink/zy8ng49nef7habqagylz.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034541/modulavers/projects/app/modulink/vh3mrfvbexpse5pjxypy.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034543/modulavers/projects/app/modulink/sx7zkguccdgoewusqclj.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034544/modulavers/projects/app/modulink/nugwp1uolw4jx3hdsnie.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034545/modulavers/projects/app/modulink/yyq6ennduwcaugvo8wjz.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034546/modulavers/projects/app/modulink/i8nhkczmhidvex7tyfe0.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034547/modulavers/projects/app/modulink/ypwunleciccjmadl0a2e.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791034548/modulavers/projects/app/modulink/h94few9z6oolhqfitfci.jpg"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-03T13:36:14.353Z",
+    "updatedAt": "2026-10-03T13:36:14.353Z",
+    "__v": 0
   }
 ]
