@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center p-4 md:p-8 pt-12 pb-28">
+    <div className="relative w-full h-full flex flex-col items-center justify-center p-4 md:p-8 pt-16 sm:pt-12 pb-28 overflow-y-auto">
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
