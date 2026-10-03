@@ -43,7 +43,7 @@ export default function Hero({ onNavigate }: HeroProps) {
   }, [text, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center pt-10 pb-32 px-6">
+    <div className="relative w-full h-full overflow-hidden flex flex-col items-center justify-center pt-16 pb-24 px-4 sm:px-6">
       {/* Floating Hero Widgets */}
       <StatusPill />
       <SocialDock />
@@ -63,8 +63,8 @@ export default function Hero({ onNavigate }: HeroProps) {
         />
       </div>
 
-      {/* Text Content */}
-      <div className="absolute bottom-20 sm:bottom-24 z-10 flex flex-col items-center text-center pointer-events-none w-full px-4">
+      {/* Text Content - Centered vertically & horizontally */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center pointer-events-none w-full max-w-xl mx-auto my-auto pt-16 pb-12">
         <h2 className="mb-2 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase drop-shadow-2xl">
           I'm Sadeepa <br />
           <span className="text-blue-400 inline-block min-w-[180px] sm:min-w-[280px] text-center drop-shadow-[0_0_15px_rgba(77,166,255,0.4)]">
@@ -72,7 +72,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             <span className="animate-pulse border-r-2 sm:border-r-4 border-blue-400 ml-1"></span>
           </span>
         </h2>
-        <p className="mt-1 mb-4 sm:mb-6 text-neutral-300 max-w-lg text-xs sm:text-sm md:text-base drop-shadow-md">
+        <p className="mt-1 mb-5 sm:mb-6 text-neutral-300 max-w-lg text-xs sm:text-sm md:text-base drop-shadow-md">
           Welcome to my interactive 3D universe.
         </p>
 
