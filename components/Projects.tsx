@@ -159,28 +159,16 @@ export default function Projects() {
                       </div>
                     )}
 
-                    {(project.projectLink || project.githubLink) && (
+                    {project.projectLink && (
                       <div className="flex gap-4 pt-1">
-                        {project.projectLink && (
-                          <a
-                            href={project.projectLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs font-semibold text-blue-400 hover:underline flex items-center gap-1"
-                          >
-                            Live Demo ↗
-                          </a>
-                        )}
-                        {project.githubLink && (
-                          <a
-                            href={project.githubLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs font-semibold text-neutral-400 hover:text-white transition-colors"
-                          >
-                            GitHub ↗
-                          </a>
-                        )}
+                        <a
+                          href={project.projectLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-semibold text-blue-400 hover:underline flex items-center gap-1"
+                        >
+                          Live Demo ↗
+                        </a>
                       </div>
                     )}
                   </div>
