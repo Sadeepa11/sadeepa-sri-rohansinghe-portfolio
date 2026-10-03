@@ -21,6 +21,7 @@ const navItems = [
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState("Home");
+  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
 
   return (
     <main className="relative w-full h-screen overflow-hidden bg-neutral-950 text-white">
@@ -52,7 +53,11 @@ export default function Home() {
             <motion.div key="skills" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="w-full h-full"><ScrollArea><Skills /></ScrollArea></motion.div>
           )}
           {currentSection === "Projects" && (
-            <motion.div key="projects" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="w-full h-full"><ScrollArea><Projects /></ScrollArea></motion.div>
+            <motion.div key="projects" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="w-full h-full">
+              <ScrollArea>
+                <Projects onModalToggle={setIsProjectModalOpen} />
+              </ScrollArea>
+            </motion.div>
           )}
           {currentSection === "Contact" && (
             <motion.div key="contact" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="w-full h-full"><ScrollArea><Contact /></ScrollArea></motion.div>
@@ -60,34 +65,44 @@ export default function Home() {
         </AnimatePresence>
       </div>
 
-      {/* iOS Bottom Tab Bar */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-3 max-w-[90vw]">
-        {navItems.map((item) => {
-          const isActive = currentSection === item.id;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setCurrentSection(item.id)}
-              className={`group relative flex flex-col items-center justify-center w-14 h-12 sm:w-16 sm:h-14 rounded-2xl backdrop-blur-2xl border transition-all duration-300 ${
-                isActive 
-                  ? "text-white bg-neutral-900/80 border-white/20 shadow-[0_8px_24px_rgba(0,0,0,0.5)] scale-105" 
-                  : "text-neutral-400 bg-neutral-900/40 border-white/10 hover:text-white hover:bg-neutral-900/60"
-              }`}
-            >
-              {/* Active Indicator Background */}
-              {isActive && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-white/10 rounded-2xl"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <item.icon size={isActive ? 22 : 20} className={`mb-1 transition-all duration-300 ${isActive ? "scale-110" : ""}`} />
-              <span className="text-[9px] sm:text-[10px] font-medium tracking-wide">{item.label}</span>
-            </button>
-          );
-        })}
-      </div>
+      {/* iOS Bottom Tab Bar with Animated Show/Hide */}
+      <AnimatePresence>
+        {!isProjectModalOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40, scale: 0.9 }}
+            transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-3 max-w-[90vw]"
+          >
+            {navItems.map((item) => {
+              const isActive = currentSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setCurrentSection(item.id)}
+                  className={`group relative flex flex-col items-center justify-center w-14 h-12 sm:w-16 sm:h-14 rounded-2xl backdrop-blur-2xl border transition-all duration-300 ${
+                    isActive 
+                      ? "text-white bg-neutral-900/80 border-white/20 shadow-[0_8px_24px_rgba(0,0,0,0.5)] scale-105" 
+                      : "text-neutral-400 bg-neutral-900/40 border-white/10 hover:text-white hover:bg-neutral-900/60"
+                  }`}
+                >
+                  {/* Active Indicator Background */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-white/10 rounded-2xl"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <item.icon size={isActive ? 22 : 20} className={`mb-1 transition-all duration-300 ${isActive ? "scale-110" : ""}`} />
+                  <span className="text-[9px] sm:text-[10px] font-medium tracking-wide">{item.label}</span>
+                </button>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

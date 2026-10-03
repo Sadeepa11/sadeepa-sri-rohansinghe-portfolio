@@ -19,7 +19,11 @@ interface Project {
   images?: string[];
 }
 
-export default function Projects() {
+interface ProjectsProps {
+  onModalToggle?: (isOpen: boolean) => void;
+}
+
+export default function Projects({ onModalToggle }: ProjectsProps) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [filter, setFilter] = useState<"all" | "web" | "app">("all");
   const [isLoading, setIsLoading] = useState(true);
@@ -47,11 +51,13 @@ export default function Projects() {
   const openProjectModal = (project: Project) => {
     setSelectedProject(project);
     setActiveImageIndex(0);
+    onModalToggle?.(true);
   };
 
   const closeProjectModal = () => {
     setSelectedProject(null);
     setActiveImageIndex(0);
+    onModalToggle?.(false);
   };
 
   const filteredProjects = projects.filter((project) => {
