@@ -61,7 +61,7 @@ export default function Home() {
       </div>
 
       {/* iOS Bottom Tab Bar */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 w-auto px-4 max-w-[90vw]">
+      {/* <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 w-auto px-4 max-w-[90vw]"> */}
         <div className="flex items-center gap-1 sm:gap-2 px-4 py-3 bg-neutral-900/60 backdrop-blur-2xl rounded-[32px] border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
           {navItems.map((item) => {
             const isActive = currentSection === item.id;
@@ -87,7 +87,7 @@ export default function Home() {
             );
           })}
         </div>
-      </div>
+      {/* </div> */}
     </main>
   );
 }
