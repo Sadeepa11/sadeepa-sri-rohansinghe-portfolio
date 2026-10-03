@@ -3,14 +3,24 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 interface Project {
-  id: string;
+  _id?: string;
+  id?: string;
   title: string;
+  slug?: string;
+  type?: string;
+  category?: string;
+  client?: string;
   description: string;
-  tags: string[];
+  technologies?: string[];
+  tags?: string[];
+  projectLink?: string;
+  githubLink?: string;
+  images?: string[];
 }
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [filter, setFilter] = useState<"all" | "web" | "app">("all");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -31,55 +41,155 @@ export default function Projects() {
     fetchProjects();
   }, []);
 
+  const filteredProjects = projects.filter((project) => {
+    if (filter === "web") return project.type === "web";
+    if (filter === "app") return project.type === "app";
+    return true;
+  });
+
   return (
-    <div className="relative w-full min-h-full flex flex-col items-center justify-center p-6 md:p-12 mb-20 pt-20">
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
-        className="w-full max-w-6xl p-8 md:p-12 bg-neutral-900/40 backdrop-blur-2xl rounded-[32px] border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-      >
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-12 tracking-tight text-center">
-          Featured <span className="text-blue-400">Projects</span>
-        </h2>
-        
-        {isLoading ? (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+    <div className="relative w-full h-full flex flex-col justify-between pt-6 pb-24 overflow-hidden">
+      {/* Title & Filter Tabs Header */}
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 shrink-0 z-10">
+        <div>
+          <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
+            Featured <span className="text-blue-400">Projects</span>
+          </h2>
+          <p className="text-neutral-400 text-xs md:text-sm mt-0.5">
+            Explore my latest web platforms and mobile applications
+          </p>
+        </div>
+
+        {/* Filter Buttons */}
+        <div className="flex items-center gap-1.5 bg-neutral-900/60 p-1.5 rounded-full border border-white/10 backdrop-blur-xl">
+          <button
+            onClick={() => setFilter("all")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              filter === "all"
+                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
+                : "text-neutral-400 hover:text-white"
+            }`}
+          >
+            All ({projects.length})
+          </button>
+          <button
+            onClick={() => setFilter("web")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              filter === "web"
+                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
+                : "text-neutral-400 hover:text-white"
+            }`}
+          >
+            Web Apps ({projects.filter(p => p.type === 'web').length})
+          </button>
+          <button
+            onClick={() => setFilter("app")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              filter === "app"
+                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
+                : "text-neutral-400 hover:text-white"
+            }`}
+          >
+            Mobile Apps ({projects.filter(p => p.type === 'app').length})
+          </button>
+        </div>
+      </div>
+
+      {isLoading ? (
+        <div className="flex justify-center items-center py-20 flex-1">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
+        </div>
+      ) : (
+        /* Horizontal X-Axis Scroll Container */
+        <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-none px-6 md:px-12 py-2 flex items-center gap-6 snap-x snap-mandatory flex-1">
+          {filteredProjects.map((project, index) => {
+            const displayTags = project.technologies || project.tags || [];
+            const mainImage = project.images && project.images.length > 0 ? project.images[0] : null;
+
+            return (
               <motion.div
-                key={project.id || project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.4 }}
-                className="relative p-1 rounded-[28px] bg-white/5 backdrop-blur-md border border-white/10 flex flex-col h-full overflow-hidden group shadow-inner transition-colors hover:bg-white/10"
+                key={project._id || project.id || project.title}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                className="snap-center shrink-0 w-[280px] sm:w-[320px] md:w-[350px] rounded-[28px] bg-neutral-900/40 backdrop-blur-2xl border border-white/10 p-2 flex flex-col h-[380px] sm:h-[400px] shadow-[0_8px_32px_rgba(0,0,0,0.4)] group hover:border-blue-500/30 transition-all"
               >
-                <div className="h-48 bg-neutral-800/50 overflow-hidden relative rounded-t-[24px]">
-                  <div className="absolute inset-0 bg-blue-500/20 mix-blend-overlay group-hover:bg-blue-400/30 transition-all" />
+                {/* Image Section */}
+                <div className="h-36 sm:h-40 bg-neutral-800/50 overflow-hidden relative rounded-[22px] shrink-0">
+                  {mainImage ? (
+                    <img
+                      src={mainImage}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-blue-500/20 mix-blend-overlay group-hover:bg-blue-400/30 transition-all" />
+                  )}
+                  {project.category && (
+                    <span className="absolute top-2.5 right-2.5 px-2.5 py-0.5 bg-black/60 backdrop-blur-md rounded-full text-[10px] text-blue-300 font-medium border border-white/10">
+                      {project.category}
+                    </span>
+                  )}
+                  {project.type && (
+                    <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 bg-blue-600/80 backdrop-blur-md rounded-full text-[9px] uppercase font-bold text-white tracking-wider">
+                      {project.type === 'web' ? 'Web App' : 'Mobile App'}
+                    </span>
+                  )}
                 </div>
-                <div className="p-8 flex flex-col flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-neutral-300 font-medium mb-8 flex-1 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="px-3 py-1 bg-white/5 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-widest text-blue-300">
-                        {tag}
-                      </span>
-                    ))}
+
+                {/* Content Section */}
+                <div className="p-4 flex flex-col flex-1 justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-1.5 group-hover:text-blue-400 transition-colors line-clamp-1">
+                      {project.title}
+                    </h3>
+                    <p className="text-neutral-300 font-normal leading-relaxed text-xs line-clamp-2 sm:line-clamp-3 mb-2">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    {displayTags.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mb-3 pt-2.5 border-t border-white/10">
+                        {displayTags.map(tag => (
+                          <span key={tag} className="px-2 py-0.5 bg-white/5 rounded-full border border-white/10 text-[8px] sm:text-[9px] font-bold uppercase tracking-widest text-blue-300">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {(project.projectLink || project.githubLink) && (
+                      <div className="flex gap-4 pt-1">
+                        {project.projectLink && (
+                          <a
+                            href={project.projectLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs font-semibold text-blue-400 hover:underline flex items-center gap-1"
+                          >
+                            Live Demo ↗
+                          </a>
+                        )}
+                        {project.githubLink && (
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs font-semibold text-neutral-400 hover:text-white transition-colors"
+                          >
+                            GitHub ↗
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
-            ))}
-          </div>
-        )}
-      </motion.div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
