@@ -52,10 +52,10 @@ export function SocialDock() {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-20 flex-col gap-4 p-3 bg-neutral-900/30 backdrop-blur-xl border border-white/10 rounded-3xl"
+      className="absolute top-20 left-1/2 -translate-x-1/2 md:top-1/2 md:left-8 md:translate-x-0 md:-translate-y-1/2 z-20 flex flex-row md:flex-col gap-3 md:gap-4 p-2 md:p-3 bg-neutral-900/50 backdrop-blur-xl border border-white/10 rounded-full md:rounded-3xl shadow-lg"
     >
       {socials.map((social, i) => (
         <a 
@@ -63,9 +63,9 @@ export function SocialDock() {
           href={social.href}
           target={social.target}
           rel="noopener noreferrer"
-          className={`p-3 rounded-2xl bg-white/5 transition-all duration-300 hover:bg-white/20 text-neutral-400 ${social.color} shadow-inner`}
+          className={`p-2.5 md:p-3 rounded-full md:rounded-2xl bg-white/5 transition-all duration-300 hover:bg-white/20 text-neutral-300 ${social.color} shadow-inner`}
         >
-          <social.icon size={20} />
+          <social.icon size={18} />
         </a>
       ))}
     </motion.div>
