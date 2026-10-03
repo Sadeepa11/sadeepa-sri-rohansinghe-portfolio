@@ -48,7 +48,7 @@ export default function Projects() {
   });
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-center items-center p-4 md:p-8 pt-16 sm:pt-10 pb-28 overflow-hidden">
+    <div className="relative w-full h-full flex flex-col justify-start items-center p-4 md:p-8 pt-20 sm:pt-16 pb-20 overflow-hidden">
       {/* Title & Filter Tabs Header */}
       <div className="w-full max-w-7xl px-2 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 mb-3 shrink-0 z-10">
         <div className="text-center sm:text-left">
