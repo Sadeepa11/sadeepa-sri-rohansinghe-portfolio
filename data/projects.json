@@ -1,20 +1,222 @@
 [
   {
-    "id": "1",
-    "title": "EcoSphere 3D",
-    "description": "An immersive data visualization platform for global climate metrics.",
-    "tags": ["Three.js", "React", "D3.js"]
+    "_id": "6abfddf9dacf3b6a961ab235",
+    "title": "Modulavers Systems",
+    "slug": "modulavers-systems",
+    "type": "web",
+    "category": "Company Website",
+    "client": "Modulavers Systems",
+    "description": "A professional software company website showcasing custom web, mobile, and business software solutions, along with UI/UX design and digital services.",
+    "technologies": [
+      "Next Js",
+      "Mongo DB",
+      "Cloudinary"
+    ],
+    "projectLink": "https://www.modulaversystems.com",
+    "githubLink": "https://github.com/Sadeepa11/ModulaversSystems.git",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790959669/modulavers/projects/web/modulavers-systems/zucpz04yyrvgjjffgj7x.png",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790958962/modulavers/projects/web/modulavers-systems/t13aemktmwobavzfrrbt.png",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790958956/modulavers/projects/web/modulavers-systems/wkw5jubtv7fup8fqxsnx.png",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790958966/modulavers/projects/web/modulavers-systems/znpqilk07ijakdkaujmn.png",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790958974/modulavers/projects/web/modulavers-systems/icoa7n6gswjkibmvffiy.png",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790958982/modulavers/projects/web/modulavers-systems/dydf4aar0q1d6xk9catz.png",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790958999/modulavers/projects/web/modulavers-systems/zgz3ejfxti3kyqjkleg0.png"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-02T16:38:17.286Z",
+    "updatedAt": "2026-10-02T16:47:55.283Z",
+    "__v": 0
   },
   {
-    "id": "2",
-    "title": "Aura Commerce",
-    "description": "A high-performance luxury e-commerce experience with 3D product previews.",
-    "tags": ["Next.js", "Shopify", "R3F"]
+    "_id": "6abfe20647bb880528d39a1e",
+    "title": "Share Hub",
+    "slug": "share-hub",
+    "type": "web",
+    "category": "Donation Website",
+    "client": "Share Hub",
+    "description": "A user-friendly donation platform that connects donors with meaningful causes and provides a simple, secure, and accessible way to make contributions.\r\n",
+    "technologies": [
+      "Next Js",
+      "Mongo DB"
+    ],
+    "projectLink": "https://share-hub-beta.vercel.app",
+    "githubLink": "https://github.com/Sadeepa11/Share-Hub.git",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790959908/modulavers/projects/web/share-hub/tcq48xjp3qt9rfegtg0e.png",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790960032/modulavers/projects/web/share-hub/e6x2yevenvqcvo6fqfd8.png",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790960105/modulavers/projects/web/share-hub/rihoaafpgb5hwtty2i8b.png"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-02T16:55:34.042Z",
+    "updatedAt": "2026-10-02T16:55:34.042Z",
+    "__v": 0
   },
   {
-    "id": "3",
-    "title": "Neuro-Net UI",
-    "description": "A futuristic design system for AI-driven management platforms.",
-    "tags": ["Tailwind", "Framer Motion", "GSAP"]
+    "_id": "6abfeb4f5ef052168bd6e1d0",
+    "title": "Online Store",
+    "slug": "online-store",
+    "type": "app",
+    "category": "E-Commerce",
+    "client": "Online Store",
+    "description": "A modern mobile clothing store application designed to provide a seamless shopping experience. Users can browse clothing collections, explore product details, select sizes and options, add items to their cart, and conveniently place orders through a simple and user-friendly interface.",
+    "technologies": [
+      "React Native",
+      "PostgraSQL",
+      "Express JS"
+    ],
+    "projectLink": "",
+    "githubLink": "",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962401/modulavers/projects/app/online-store/fxtfoygewo1xjwj4sv1d.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962372/modulavers/projects/app/online-store/ithkmbeetlppn10ru2lu.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962375/modulavers/projects/app/online-store/pgq4n7occhel84muvx69.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962380/modulavers/projects/app/online-store/eqyf15zsz45n3wpd6fqa.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962383/modulavers/projects/app/online-store/kjodfssc1gkskpjspc35.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962385/modulavers/projects/app/online-store/eh48lbbt1pdrbxoadgpj.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962388/modulavers/projects/app/online-store/o0tpig5ahkefk4atig7b.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962392/modulavers/projects/app/online-store/rrxw4hyhkjeonblugk6f.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962395/modulavers/projects/app/online-store/rzq9udtvresh015zg2ed.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962403/modulavers/projects/app/online-store/yvapn6gzeqktntvlp7jx.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962407/modulavers/projects/app/online-store/g1m0ntvg5mmgulgrsjhe.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962411/modulavers/projects/app/online-store/jyk44dwrprmygdgpjccw.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962415/modulavers/projects/app/online-store/gysynfjtad4dee1h3rte.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962421/modulavers/projects/app/online-store/e0v3s0zhiotyqs6ddzrl.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962430/modulavers/projects/app/online-store/oomwcg3urilzvxagzldx.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962434/modulavers/projects/app/online-store/h61abvktrgbma7xiegoc.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962439/modulavers/projects/app/online-store/qmz2jugqwezc21e5z9lr.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962441/modulavers/projects/app/online-store/r8thnjrw0hg1zkvqcl7s.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962444/modulavers/projects/app/online-store/njb1vgp3zwhpdckhzny3.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962450/modulavers/projects/app/online-store/ubfkqyrajqfddsxaax3s.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962453/modulavers/projects/app/online-store/xytlozoedds7zesd9pfw.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790962456/modulavers/projects/app/online-store/gct7emvzsy2muyrk7imz.jpg"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-02T17:35:11.507Z",
+    "updatedAt": "2026-10-02T17:35:11.507Z",
+    "__v": 0
+  },
+  {
+    "_id": "6abff2c988501697c4ee094c",
+    "title": "ACNU",
+    "slug": "acnu",
+    "type": "web",
+    "category": "Company Website",
+    "client": "ACNU",
+    "description": "A professional healthcare and nursing organization website designed to showcase ACNU’s services, programs, resources, and activities. The platform provides visitors with clear information about the organization while offering a modern, accessible, and user-friendly digital experience.",
+    "technologies": [
+      "React Js"
+    ],
+    "projectLink": "https://nurse-gov.vercel.app/",
+    "githubLink": "",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790964417/modulavers/projects/web/acnu/bsllje6wpcnug4bnxp5h.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790964414/modulavers/projects/web/acnu/ntecy0vz6m11iqgty2a0.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1790964416/modulavers/projects/web/acnu/wv8tuf0rwiurgh2yxt8m.jpg"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-02T18:07:05.568Z",
+    "updatedAt": "2026-10-02T18:07:05.568Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ac0b31dac0489b2c0e3b287",
+    "title": "Elegance",
+    "slug": "elegance",
+    "type": "app",
+    "category": "E-Commerce",
+    "client": "Elegance",
+    "description": "A modern e-commerce clothing store that allows customers to browse fashion products, explore categories, view product details, add items to their cart, and place orders through a smooth online shopping experience.",
+    "technologies": [
+      "Android (Java)",
+      "Firbase"
+    ],
+    "projectLink": "",
+    "githubLink": "",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013633/modulavers/projects/app/elegance/rv05antl4ijg1ol6jyrb.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013637/modulavers/projects/app/elegance/tcarirqlfgj0z5di2z4a.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013640/modulavers/projects/app/elegance/yqdgixlbgmsg9drvxik0.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013642/modulavers/projects/app/elegance/mxhehrgks5t217fu46g3.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013644/modulavers/projects/app/elegance/joh5eugs1ak8gscsq7zl.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013646/modulavers/projects/app/elegance/udzoussfmrfsbyqm2br2.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013647/modulavers/projects/app/elegance/t6kvdztu0aealfray8z0.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013649/modulavers/projects/app/elegance/jlansornybkvddswvqzt.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013650/modulavers/projects/app/elegance/rx1pzth1snm1l1nefnrt.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013652/modulavers/projects/app/elegance/abobyshfcpeq2senx81b.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791013653/modulavers/projects/app/elegance/pznif22bln4lksbqaftp.jpg"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-03T07:47:41.158Z",
+    "updatedAt": "2026-10-03T07:47:41.158Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ac0ecfd63189555c069dc84",
+    "title": "Serve Family",
+    "slug": "serve-family",
+    "type": "app",
+    "category": "Family Location Tracking and Taxi",
+    "client": "Serve Family",
+    "description": "A mobile application combining family location tracking and taxi booking services in one convenient platform. Users can securely share and monitor family members’ locations, manage location-based connections, and book taxi services with an easy-to-use interface designed for convenient everyday travel.",
+    "technologies": [
+      "React Native"
+    ],
+    "projectLink": "",
+    "githubLink": "",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028462/modulavers/projects/app/serve-family/y40r5jg7todjcwtyyqhq.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028459/modulavers/projects/app/serve-family/fkejwypgkzkm0jhisrcx.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028460/modulavers/projects/app/serve-family/ynbbjpxjakpiuuj0op3l.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028463/modulavers/projects/app/serve-family/waiwotfwoegmwumrg44g.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028465/modulavers/projects/app/serve-family/vvxbruwvywwq7ifw6h8h.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028467/modulavers/projects/app/serve-family/x860jnzgin4hvpcsxu3o.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028469/modulavers/projects/app/serve-family/ppyfbp7y5ytbebikjocl.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028470/modulavers/projects/app/serve-family/kxpedsmbof4xljrkkoiq.jpg"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-03T11:54:37.432Z",
+    "updatedAt": "2026-10-03T11:54:37.432Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ac0ee7c63189555c069dc85",
+    "title": "Eventify",
+    "slug": "eventify",
+    "type": "app",
+    "category": "Calender App",
+    "client": "Eventify",
+    "description": "A specialized calendar and task management application designed for lawyers to efficiently organize cases, events, and daily tasks in one place. The platform uses intuitive color coding to distinguish different types of activities, making it easier to manage schedules, track important deadlines, and stay organized.",
+    "technologies": [
+      "React Native",
+      "Laravel"
+    ],
+    "projectLink": "",
+    "githubLink": "",
+    "images": [
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028765/modulavers/projects/app/eventify/wayztvdftt6jiyhvpfc4.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028761/modulavers/projects/app/eventify/qx0c406orqnd5vrsdvvs.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028763/modulavers/projects/app/eventify/fvsqhflmdkzmohvrak8u.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028764/modulavers/projects/app/eventify/gznkgutobg5pimyvka8e.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028767/modulavers/projects/app/eventify/wxjgmryvm6elfj5fioji.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028768/modulavers/projects/app/eventify/lwnhw6yzfnur2zk7yrif.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028769/modulavers/projects/app/eventify/tlm2jcezb8qpf3cal3wt.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028772/modulavers/projects/app/eventify/r3ujfbshg7v876ywkhrp.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028774/modulavers/projects/app/eventify/icpzlpjgq7wn1vkmrt4m.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028775/modulavers/projects/app/eventify/pu9mlqspkfmcagmpoph9.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028778/modulavers/projects/app/eventify/mu5ojkkgpxgamlmcw5v6.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028780/modulavers/projects/app/eventify/q0sukqn1yrhtnzo5rnwq.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028782/modulavers/projects/app/eventify/uzzch0g8hxvsn8qepq8l.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028789/modulavers/projects/app/eventify/ghgozpeqcgla0v4xipik.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028792/modulavers/projects/app/eventify/vhu50hxez64v4tvpnpia.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028793/modulavers/projects/app/eventify/jo9ylhthzuotvdqw1pyx.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028795/modulavers/projects/app/eventify/swib0scl86irlwglrsq4.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028796/modulavers/projects/app/eventify/wtnbhdtbha0azdmglzhu.jpg",
+      "https://res.cloudinary.com/noymzwzm/image/upload/v1791028802/modulavers/projects/app/eventify/esweerogecywkxowri6x.jpg"
+    ],
+    "featured": false,
+    "createdAt": "2026-10-03T12:01:00.165Z",
+    "updatedAt": "2026-10-03T12:01:00.165Z",
+    "__v": 0
   }
 ]
