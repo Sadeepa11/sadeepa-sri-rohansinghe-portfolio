@@ -50,21 +50,21 @@ export default function Projects() {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center p-4 md:p-8 pt-10 pb-28 overflow-hidden">
       {/* Title & Filter Tabs Header */}
-      <div className="w-full max-w-7xl px-2 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 shrink-0 z-10">
-        <div>
-          <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">
+      <div className="w-full max-w-7xl px-2 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 mb-3 shrink-0 z-10">
+        <div className="text-center sm:text-left">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-extrabold text-white tracking-tight">
             Featured <span className="text-blue-400">Projects</span>
           </h2>
-          <p className="text-neutral-400 text-xs md:text-sm mt-0.5">
+          <p className="text-neutral-400 text-[11px] sm:text-xs md:text-sm mt-0.5">
             Explore my latest web platforms and mobile applications
           </p>
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex items-center gap-1.5 bg-neutral-900/60 p-1.5 rounded-full border border-white/10 backdrop-blur-xl">
+        <div className="flex items-center gap-1.5 bg-neutral-900/60 p-1 rounded-full border border-white/10 backdrop-blur-xl max-w-full overflow-x-auto scrollbar-none">
           <button
             onClick={() => setFilter("all")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            className={`px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold whitespace-nowrap transition-all ${
               filter === "all"
                 ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
                 : "text-neutral-400 hover:text-white"
@@ -74,7 +74,7 @@ export default function Projects() {
           </button>
           <button
             onClick={() => setFilter("web")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            className={`px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold whitespace-nowrap transition-all ${
               filter === "web"
                 ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
                 : "text-neutral-400 hover:text-white"
@@ -84,7 +84,7 @@ export default function Projects() {
           </button>
           <button
             onClick={() => setFilter("app")}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            className={`px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold whitespace-nowrap transition-all ${
               filter === "app"
                 ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
                 : "text-neutral-400 hover:text-white"
