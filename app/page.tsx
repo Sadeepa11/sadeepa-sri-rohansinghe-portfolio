@@ -24,7 +24,7 @@ export default function Home() {
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
 
   return (
-    <main className="relative w-full h-screen overflow-hidden bg-neutral-950 text-white">
+    <main className="relative w-full h-[100dvh] max-h-[100dvh] overflow-hidden bg-neutral-950 text-white flex flex-col justify-between">
       {/* Abstract Animated Blur Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[100px]" />
@@ -32,7 +32,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 w-full h-full pb-24">
+      <div className="relative z-10 w-full flex-1 overflow-hidden">
         <AnimatePresence mode="wait">
           {currentSection === "Home" && (
             <motion.div
@@ -73,7 +73,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.9 }}
             transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-3 max-w-[90vw]"
+            className="z-50 shrink-0 self-center py-3 px-4 flex items-center gap-2 sm:gap-3 max-w-[90vw]"
           >
             {navItems.map((item) => {
               const isActive = currentSection === item.id;
@@ -81,7 +81,7 @@ export default function Home() {
                 <button
                   key={item.id}
                   onClick={() => setCurrentSection(item.id)}
-                  className={`group relative flex flex-col items-center justify-center w-14 h-12 sm:w-16 sm:h-14 rounded-2xl backdrop-blur-2xl border transition-all duration-300 ${
+                  className={`group relative flex flex-col items-center justify-center w-12 h-11 sm:w-16 sm:h-14 rounded-2xl backdrop-blur-2xl border transition-all duration-300 ${
                     isActive 
                       ? "text-white bg-neutral-900/80 border-white/20 shadow-[0_8px_24px_rgba(0,0,0,0.5)] scale-105" 
                       : "text-neutral-400 bg-neutral-900/40 border-white/10 hover:text-white hover:bg-neutral-900/60"
@@ -95,8 +95,8 @@ export default function Home() {
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
-                  <item.icon size={isActive ? 22 : 20} className={`mb-1 transition-all duration-300 ${isActive ? "scale-110" : ""}`} />
-                  <span className="text-[9px] sm:text-[10px] font-medium tracking-wide">{item.label}</span>
+                  <item.icon size={isActive ? 20 : 18} className={`mb-0.5 sm:mb-1 transition-all duration-300 ${isActive ? "scale-110" : ""}`} />
+                  <span className="text-[8px] sm:text-[10px] font-medium tracking-wide">{item.label}</span>
                 </button>
               );
             })}
