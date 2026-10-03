@@ -64,10 +64,10 @@ export default function Hero({ onNavigate }: HeroProps) {
       </div>
 
       {/* Text Content */}
-      <div className="absolute bottom-24 sm:bottom-28 z-10 flex flex-col items-center text-center pointer-events-none w-full px-4">
+      <div className="absolute bottom-20 sm:bottom-24 z-10 flex flex-col items-center text-center pointer-events-none w-full px-4">
         <h2 className="mb-2 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase drop-shadow-2xl">
           I'm Sadeepa <br />
-          <span className="text-blue-400 inline-block min-w-[200px] sm:min-w-[280px] text-center drop-shadow-[0_0_15px_rgba(77,166,255,0.4)]">
+          <span className="text-blue-400 inline-block min-w-[180px] sm:min-w-[280px] text-center drop-shadow-[0_0_15px_rgba(77,166,255,0.4)]">
             {text}
             <span className="animate-pulse border-r-2 sm:border-r-4 border-blue-400 ml-1"></span>
           </span>
